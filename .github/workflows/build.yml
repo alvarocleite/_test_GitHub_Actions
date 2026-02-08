@@ -21,7 +21,7 @@ jobs:
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 
     - name: Build
-      shell: bash
+#     shell: bash
       run: |
         cmake --build build --config Release 2>&1 | tee build.log
         grep -i "warning" build.log > warnings.log || true
@@ -34,7 +34,7 @@ jobs:
         path: warnings.log
 
     - name: Run
-      shell: bash
+#     shell: bash
       run: |
         if [ "${{ runner.os }}" == "Windows" ]; then
           ./build/Release/hello.exe
